@@ -9,12 +9,15 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movementDir;
     public Rigidbody2D rb;
     public Animator anim;
-    bool isFacingRight = true;
+    public bool isFacingRight = true;
     public float attackTime;
     bool canAttack = true;
     float timer;
     public GameObject attackCollider;
     float horizontal;
+    float vertical;
+    bool powerActive;
+    public GameObject masks;
 
     void Start()
     {
@@ -53,6 +56,24 @@ public class PlayerMovement : MonoBehaviour
             timer = attackTime;
             canAttack = true;
         }
+
+        if(Input.GetButtonDown("Power") && !powerActive) 
+        {
+            powerActive = true;
+        }
+        else if(Input.GetButtonDown("Power") && powerActive) 
+        {
+            powerActive = false;
+        }
+
+        if(powerActive) 
+        {
+            masks.SetActive(true);
+        }
+        else 
+        {
+            masks.SetActive(false);
+        }
     }
 
     void FixedUpdate()
@@ -61,15 +82,15 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void GetInput() 
-    {
+    {//
         horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        vertical = Input.GetAxisRaw("Vertical");
         movementDir = new Vector2(horizontal, vertical).normalized;
     }
 
     void Animation() 
     {
-        if(rb.velocity.x != 0 || rb.velocity.y != 0) 
+        if(horizontal != 0 || vertical != 0) 
         {
             anim.SetFloat("speed", 1);
         }
