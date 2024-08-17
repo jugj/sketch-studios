@@ -21,8 +21,12 @@ public class SonicSpeed : MonoBehaviour
         
             if (Input.GetKeyDown(KeyCode.Y) && !isLaunching)
             {
-                if(playerMovement.powerActive){
+                if(playerMovement.powerActive && playerMovement.maskHP > 1){
                     StartCoroutine(Launch());
+                    playerMovement.maskHP -= 2;
+                }
+                else{
+                    playerMovement.MaskExplode();
                 }
             }
         

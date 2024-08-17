@@ -16,8 +16,12 @@ public class ProjectileShoot : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            if(playerMovement.powerActive){
+            if(playerMovement.powerActive && playerMovement.maskHP > 0){
                 Shoot();
+                playerMovement.maskHP -= 1;
+            }
+            else{
+                playerMovement.MaskExplode();
             }
         }
     }
