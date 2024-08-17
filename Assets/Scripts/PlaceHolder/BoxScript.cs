@@ -11,6 +11,9 @@ public class BoxScript : MonoBehaviour
         if(col.gameObject.tag == "PlayerAttack") 
         {
             particle.Play();
+            Debug.Log("Trigger");
         }
     }
+
+   
 }

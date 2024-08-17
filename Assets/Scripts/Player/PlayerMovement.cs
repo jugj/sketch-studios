@@ -14,7 +14,8 @@ public class PlayerMovement : MonoBehaviour
     bool canAttack = true;
     float timer;
     public GameObject attackCollider;
-    
+    float horizontal;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -61,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
 
     void GetInput() 
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
+        horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         movementDir = new Vector2(horizontal, vertical).normalized;
     }
@@ -79,7 +80,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Flip() 
-    {
+    { 
+        if(horizontal > 0 && !isFacingRight || horizontal < 0 && isFacingRight) 
+        {
+            Vector3 Scale = transform.localScale;
+            isFacingRight = !isFacingRight;
+            Scale.x *= -1;
+            transform.localScale = Scale;
+        }
     }
 
    
