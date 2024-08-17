@@ -6709,6 +6709,7 @@ GameObject:
   - component: {fileID: 1287921389}
   - component: {fileID: 1287921390}
   - component: {fileID: 1287921391}
+  - component: {fileID: 1287921392}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -6851,9 +6852,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf28afc5d5c0bb48af8808976326e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 1287921385}
   launchDistance: 8
   launchDuration: 0.2
+--- !u!114 &1287921392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287921385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43c17d76b3c64d4b86a098c9a1da983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 178014698965987852, guid: f8c0ae9329a810a48a4cd1b1f7b868e8, type: 3}
+  firePoint: {fileID: 1287921386}
+  Player: {fileID: 1287921385}
 --- !u!1 &1309130195
 GameObject:
   m_ObjectHideFlags: 0
