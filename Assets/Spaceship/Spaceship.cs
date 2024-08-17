@@ -34,7 +34,6 @@ public class Spaceship : MonoBehaviour
 
         if(Input.GetKey("d"))
       transform.Translate(Vector2.right*Geschwindigkeit*Time.deltaTime,Space.World);
-<<<<<<< Updated upstream
         
         if(Input.GetKey("x")){
         currentmana -=1;
@@ -45,8 +44,6 @@ public class Spaceship : MonoBehaviour
         currentmana +=1;
          manabar.SetCurrentMana (currentmana);
         }
-=======
->>>>>>> Stashed changes
     }
 
     void OnTriggerEnter2D(Collider2D other){
