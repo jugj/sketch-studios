@@ -5795,8 +5795,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
-<<<<<<< HEAD
-=======
 --- !u!1 &479406009
 GameObject:
   m_ObjectHideFlags: 0
@@ -7651,7 +7649,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
->>>>>>> 0976646809290cbef6864aa08671dc9e7e9152e8
 --- !u!1 &794704642
 GameObject:
   m_ObjectHideFlags: 0
@@ -8345,8 +8342,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
-<<<<<<< HEAD
-=======
 --- !u!1 &1328143324
 GameObject:
   m_ObjectHideFlags: 0
@@ -8476,7 +8471,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
->>>>>>> 0976646809290cbef6864aa08671dc9e7e9152e8
 --- !u!1 &1524234672
 GameObject:
   m_ObjectHideFlags: 0
