@@ -3,25 +3,29 @@ using System.Collections;
 
 public class SonicSpeed : MonoBehaviour
 {
-    public bool maskOn = false;
-    public float launchDistance = 5f;
-    public float launchDuration = 0.5f;
+    public GameObject Player;
+    private PlayerMovement playerMovement;    
+    public float launchDistance = 8f;
+    public float launchDuration = 0.2f;
     private bool isLaunching = false;
     private Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerMovement = Player.GetComponent<PlayerMovement>();
     }
 
     void Update()
     {
-        if(maskOn){
+        
             if (Input.GetKeyDown(KeyCode.Y) && !isLaunching)
             {
-                StartCoroutine(Launch());
+                if(playerMovement.powerActive){
+                    StartCoroutine(Launch());
+                }
             }
-        }
+        
     }
 
     private IEnumerator Launch()

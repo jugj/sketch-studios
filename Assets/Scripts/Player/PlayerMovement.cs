@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject attackCollider;
     float horizontal;
     float vertical;
-    bool powerActive;
+    public bool powerActive;
     public GameObject masks;
 
     void Start()
