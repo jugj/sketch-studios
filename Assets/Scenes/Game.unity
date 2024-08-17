@@ -6032,6 +6032,37 @@ Transform:
   - {fileID: 415330540}
   m_Father: {fileID: 1287921386}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &833991335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 833991336}
+  m_Layer: 3
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &833991336
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833991335}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.26, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1287921386}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &900085333
 GameObject:
   m_ObjectHideFlags: 0
@@ -6076,15 +6107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7e0671a4d9c4347b9d153b646100e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 10
-  angle: 360
-  playerRef: {fileID: 1287921385}
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 8
-  obstructionMask:
-    serializedVersion: 2
-    m_Bits: 64
   canSeePlayer: 0
 --- !u!1 &923293614
 GameObject:
@@ -6453,6 +6475,8 @@ GameObject:
   - component: {fileID: 1287921388}
   - component: {fileID: 1287921389}
   - component: {fileID: 1287921390}
+  - component: {fileID: 1287921391}
+  - component: {fileID: 1287921392}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -6476,6 +6500,7 @@ Transform:
   - {fileID: 813620876}
   - {fileID: 225338028}
   - {fileID: 1524234673}
+  - {fileID: 833991336}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1287921387
@@ -6558,6 +6583,7 @@ MonoBehaviour:
   isFacingRight: 1
   attackTime: 0.1
   attackCollider: {fileID: 1524234672}
+  powerActive: 0
   masks: {fileID: 351826448}
 --- !u!95 &1287921390
 Animator:
@@ -6580,6 +6606,36 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1287921391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287921385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf28afc5d5c0bb48af8808976326e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1287921385}
+  launchDistance: 8
+  launchDuration: 0.2
+--- !u!114 &1287921392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287921385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43c17d76b3c64d4b86a098c9a1da983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 178014698965987852, guid: f8c0ae9329a810a48a4cd1b1f7b868e8, type: 3}
+  firePoint: {fileID: 833991336}
+  Player: {fileID: 1287921385}
 --- !u!1 &1309130195
 GameObject:
   m_ObjectHideFlags: 0
