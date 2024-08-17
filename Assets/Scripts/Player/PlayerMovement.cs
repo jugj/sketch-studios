@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     float vertical;
     bool powerActive;
     public GameObject masks;
+    public AudioSource maskOn;
 
     void Start()
     {
@@ -68,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(powerActive) 
         {
+            maskOn.Play();
             masks.SetActive(true);
         }
         else 
