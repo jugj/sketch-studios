@@ -7,7 +7,7 @@ public class Spaceship : MonoBehaviour
 {
    public float Geschwindigkeit;
 
-  public int maxmana = 5;
+  public int maxmana = 10;
   public int currentmana;
 
   public ManaBar manabar;
@@ -17,7 +17,7 @@ public class Spaceship : MonoBehaviour
     {
 
         currentmana = maxmana;
-        manabar.SetMaxMana(4);
+        manabar.SetMaxMana(10);
     }
 
     // Update is called once per frame
