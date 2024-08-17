@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class ID : MonoBehaviour
 {
-public int swordID = 2;
+    public int swordID = 2;
 }
