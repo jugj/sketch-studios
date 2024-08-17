@@ -7,7 +7,7 @@ public class Spaceship : MonoBehaviour
 {
    public float Geschwindigkeit;
 
-  public int maxmana = 5;
+  public int maxmana = 10;
   public int currentmana;
 
   public ManaBar manabar;
@@ -17,7 +17,7 @@ public class Spaceship : MonoBehaviour
     {
 
         currentmana = maxmana;
-        manabar.SetMaxMana(4);
+        manabar.SetMaxMana(10);
     }
 
     // Update is called once per frame
@@ -34,7 +34,6 @@ public class Spaceship : MonoBehaviour
 
         if(Input.GetKey("d"))
       transform.Translate(Vector2.right*Geschwindigkeit*Time.deltaTime,Space.World);
-<<<<<<< Updated upstream
         
         if(Input.GetKey("x")){
         currentmana -=1;
@@ -45,8 +44,6 @@ public class Spaceship : MonoBehaviour
         currentmana +=1;
          manabar.SetCurrentMana (currentmana);
         }
-=======
->>>>>>> Stashed changes
     }
 
     void OnTriggerEnter2D(Collider2D other){
