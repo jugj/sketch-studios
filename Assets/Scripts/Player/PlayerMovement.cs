@@ -18,6 +18,18 @@ public class PlayerMovement : MonoBehaviour
     float vertical;
     bool powerActive;
     public GameObject masks;
+    public bool gotHurt;
+    public float knockbackValue;
+    public float knockbackTimer;
+    float timer2;
+    public int Health;
+    bool canMove;
+    AI enemy;
+    public GameObject Rig;
+    public Collider2D PlayerCol;
+    public ParticleSystem deathParticle;
+    bool died;
+    public GameObject DeathPanel;
 
     void Start()
     {
@@ -25,13 +37,55 @@ public class PlayerMovement : MonoBehaviour
         timer = attackTime;
     }
 
+    void OnTriggerEnter2D(Collider2D col) 
+    {
+        if(col.gameObject.tag == "EnemyAttack") 
+        {
+            enemy = col.GetComponent<AI>();
+            Damage(10);
+            timer2 = knockbackTimer;
+            gotHurt = true;
+        }
+    }
+
+    void Damage(int damage) 
+    {
+        Health -= damage;
+    }
+
     void Update()
     {
+        if(timer2 <= 0) 
+       {
+            gotHurt = false;
+       }
+       else 
+       {
+            gotHurt = true;
+            timer2 -= Time.deltaTime;
+       }
+
+       if(gotHurt) 
+       {
+            Knockback();
+            canMove = false;
+       }
+       else 
+       {
+            canMove = true;
+       }
+
+       if(Health <= 0 && !died) 
+       {
+            Death();
+            died = true;
+       }
+        
         GetInput();
         Flip();
         Animation();
 
-        if(Input.GetButtonDown("Jump") && canAttack) 
+        if(Input.GetButtonDown("Jump") && canAttack && !died) 
         {
             anim.SetTrigger("attack");
             canAttack = false;
@@ -74,11 +128,15 @@ public class PlayerMovement : MonoBehaviour
         {
             masks.SetActive(false);
         }
+
     }
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(movementDir.x * speed, movementDir.y * speed);
+        if(canMove) 
+        {
+            rb.velocity = new Vector2(movementDir.x * speed, movementDir.y * speed);
+        }
     }
 
     void GetInput() 
@@ -111,5 +169,24 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+      void Knockback() 
+    {
+        if(enemy.isFacingRight) 
+        {
+            rb.velocity = new Vector3(knockbackValue, rb.velocity.y);
+        }
+        else 
+        {
+            rb.velocity = new Vector3(-knockbackValue, rb.velocity.y);
+        }
+    }
+
+    void Death() 
+    {
+        Rig.SetActive(false);
+        PlayerCol.enabled = false;
+        deathParticle.Play();
+        DeathPanel.SetActive(true);
+    }
    
 }
