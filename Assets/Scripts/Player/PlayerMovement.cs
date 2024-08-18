@@ -18,6 +18,17 @@ public class PlayerMovement : MonoBehaviour
     float vertical;
     public bool powerActive;
     public GameObject masks;
+    public AudioSource maskOn;
+    public AudioSource maskOff;
+    
+    public int Health;
+    bool  canMove = true;
+    AI enemy;
+    public GameObject Rig;
+    public Collider2D PlayerCol;
+    public ParticleSystem deathParticle;
+    bool died;
+    public GameObject DeathPanel;
     public int maskHP = 10;
     public bool playerDead = false;
 
@@ -27,13 +38,33 @@ public class PlayerMovement : MonoBehaviour
         timer = attackTime;
     }
 
+    void OnTriggerEnter2D(Collider2D col) 
+    {
+        if(col.gameObject.tag == "EnemyAttack") 
+        {
+            Damage(10);
+        }
+    }
+
+    void Damage(int damage) 
+    {
+        Health -= damage;
+    }
+
     void Update()
     {
+
+       if(Health <= 0 && !died) 
+       {
+            Death();
+            died = true;
+       }
+        
         GetInput();
         Flip();
         Animation();
 
-        if(Input.GetButtonDown("Jump") && canAttack) 
+        if(Input.GetButtonDown("Jump") && canAttack && !died) 
         {
             anim.SetTrigger("attack");
             canAttack = false;
@@ -70,10 +101,12 @@ public class PlayerMovement : MonoBehaviour
 
         if(powerActive) 
         {
+            maskOn.Play();
             masks.SetActive(true);
         }
         else 
         {
+            maskOff.Play();
             masks.SetActive(false);
         }
         if(Input.GetKeyDown(KeyCode.Mouse0) && powerActive)
@@ -84,7 +117,10 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(movementDir.x * speed, movementDir.y * speed);
+        if(canMove) 
+        {
+            rb.velocity = new Vector2(movementDir.x * speed, movementDir.y * speed);
+        }
     }
 
     void GetInput() 
@@ -121,6 +157,20 @@ public class PlayerMovement : MonoBehaviour
    {
     Debug.Log("Player killed because of " + reason);
     playerDead = true;
+   }
+     
+
+    void Death() 
+    {
+        Rig.SetActive(false);
+        PlayerCol.enabled = false;
+        deathParticle.Play();
+        DeathPanel.SetActive(true);
+    }
+   
+   public void MaskExplode()
+   {
+        Death();
     //Code for killing player. Coming soon...
    }
 }

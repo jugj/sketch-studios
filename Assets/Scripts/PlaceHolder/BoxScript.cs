@@ -7,8 +7,14 @@ public class BoxScript : MonoBehaviour
     public ParticleSystem particle;
     PlayerMovement player;
     Rigidbody2D rb;
-    bool gotHurt;
+    public bool gotHurt;
     public float knockbackValue;
+    public float knockbackTimer;
+    float timer;
+    public int Health;
+    public bool enemypause;
+    public float enemypausetime;
+    float pausetimer;
 
     void Start() 
     {
@@ -20,28 +26,44 @@ public class BoxScript : MonoBehaviour
     {
         if(col.gameObject.tag == "PlayerAttack") 
         {
+            Damage(10);
             particle.Play();
             Debug.Log("Trigger");
-            Knockback();
+            timer = knockbackTimer;
             gotHurt = true;
         }
        
     }
 
-    void OnTriggerExit2D(Collider2D col) 
+    void Damage(int damage) 
     {
-        if(col.gameObject.tag == "PlayerAttack") 
-        {
-            gotHurt = false;
-        } 
+        Health -= damage;
     }
+
 
     void Update() 
     {
-        if(!gotHurt) 
-        {
-            rb.velocity = Vector2.zero;
-        }
+       if(timer <= 0) 
+       {
+            gotHurt = false;
+       }
+       else 
+       {
+            gotHurt = true;
+            timer -= Time.deltaTime;
+       }
+
+       if(gotHurt) 
+       {
+            Knockback();
+       }
+
+       if(Health <= 0) 
+       {
+            Destroy(this.gameObject);
+       }
+
+      
     }
 
 
