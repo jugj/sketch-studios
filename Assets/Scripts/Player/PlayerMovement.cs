@@ -19,7 +19,8 @@ public class PlayerMovement : MonoBehaviour
     bool powerActive;
     public GameObject masks;
     public AudioSource maskOn;
-
+    public AudioSource maskOff;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
