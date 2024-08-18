@@ -18,12 +18,8 @@ public class PlayerMovement : MonoBehaviour
     float vertical;
     public bool powerActive;
     public GameObject masks;
-    public bool gotHurt;
-    public float knockbackValue;
-    public float knockbackTimer;
-    float timer2;
     public int Health;
-    bool canMove;
+    bool  canMove = true;
     AI enemy;
     public GameObject Rig;
     public Collider2D PlayerCol;
@@ -42,10 +38,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(col.gameObject.tag == "EnemyAttack") 
         {
-            enemy = col.GetComponent<AI>();
             Damage(10);
-            timer2 = knockbackTimer;
-            gotHurt = true;
         }
     }
 
@@ -56,25 +49,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if(timer2 <= 0) 
-       {
-            gotHurt = false;
-       }
-       else 
-       {
-            gotHurt = true;
-            timer2 -= Time.deltaTime;
-       }
-
-       if(gotHurt) 
-       {
-            Knockback();
-            canMove = false;
-       }
-       else 
-       {
-            canMove = true;
-       }
 
        if(Health <= 0 && !died) 
        {
@@ -173,17 +147,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-      void Knockback() 
-    {
-        if(enemy.isFacingRight) 
-        {
-            rb.velocity = new Vector3(knockbackValue, rb.velocity.y);
-        }
-        else 
-        {
-            rb.velocity = new Vector3(-knockbackValue, rb.velocity.y);
-        }
-    }
+     
 
     void Death() 
     {
@@ -195,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
    
    public void MaskExplode()
    {
-    Debug.Log("Player killed");
+        Death();
     //Code for killing player. Coming soon...
    }
 }
