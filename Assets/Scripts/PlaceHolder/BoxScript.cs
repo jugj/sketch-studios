@@ -10,6 +10,7 @@ public class BoxScript : MonoBehaviour
     public bool gotHurt;
     public float knockbackValue;
     public float knockbackTimer;
+    public float knockbackTimerbuffed;
     float timer;
     public int Health;
     public bool enemypause;
@@ -33,6 +34,15 @@ public class BoxScript : MonoBehaviour
             particle.Play();
             Debug.Log("Trigger");
             timer = knockbackTimer;
+            gotHurt = true;
+        }
+
+        if(col.gameObject.tag == "PlayerBuffedAttack") 
+        {
+            Damage(20);
+            particle.Play();
+            Debug.Log("Trigger");
+            timer = knockbackTimerbuffed;
             gotHurt = true;
         }
 

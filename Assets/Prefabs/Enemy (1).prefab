@@ -5264,6 +5264,7 @@ MonoBehaviour:
   gotHurt: 0
   knockbackValue: 20
   knockbackTimer: 0.15
+  knockbackTimerbuffed: 0.2
   Health: 50
   enemypause: 0
   enemypausetime: 1

@@ -9,6 +9,7 @@ TagManager:
   - EnemyAttack
   - BulletAttack
   - powerHealth
+  - PlayerBuffedAttack
   layers:
   - Default
   - TransparentFX
