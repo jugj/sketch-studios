@@ -1118,11 +1118,11 @@ RectTransform:
   m_LocalScale: {x: 0.7101, y: 0.7101, z: 0.7101}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1920268406}
+  m_Father: {fileID: 4653390992187679196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.7839966, y: -9.903015}
+  m_AnchoredPosition: {x: 16.000011, y: -15.000057}
   m_SizeDelta: {x: 1024, y: 339}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &423273720
@@ -7765,6 +7765,7 @@ MonoBehaviour:
   deathParticle: {fileID: 5964285342022593612}
   DeathPanel: {fileID: 2024568727}
   maskHP: 10
+  playerDead: 0
 --- !u!95 &1287921390
 Animator:
   serializedVersion: 5
@@ -7801,6 +7802,7 @@ MonoBehaviour:
   Player: {fileID: 1287921385}
   launchDistance: 8
   launchDuration: 0.2
+  ManaBar: {fileID: 6230983415075777937}
 --- !u!114 &1287921392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7816,6 +7818,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 178014698965987852, guid: f8c0ae9329a810a48a4cd1b1f7b868e8, type: 3}
   firePoint: {fileID: 1287921386}
   Player: {fileID: 1287921385}
+  ManaBar: {fileID: 6230983415075777937}
 --- !u!82 &1287921393
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14125,14 +14128,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 423273719}
+  m_Children: []
   m_Father: {fileID: 4653390992187679196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 23.783997, y: -5.0970154}
-  m_SizeDelta: {x: -47.568, y: -222.4616}
+  m_AnchoredPosition: {x: 36.651, y: 0}
+  m_SizeDelta: {x: -73.301, y: -22.157}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1920268407
 MonoBehaviour:
@@ -14796,9 +14798,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 11
   m_WholeNumbers: 1
-  m_Value: 10
+  m_Value: 11
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -20896,6 +20898,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1920268406}
+  - {fileID: 423273719}
   m_Father: {fileID: 4308132460086609025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -49156,8 +49159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86cd39d9b758b249b142269fb55ec52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentmana: 0
-  maxmana: 4
+  currentmana: 11
+  maxmana: 11
   slider: {fileID: 126829656563216834}
 --- !u!212 &6162961434345524759
 SpriteRenderer:
