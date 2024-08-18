@@ -21,9 +21,11 @@ public class ChangeSword : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            if(otherSword.activeSelf){
+
             float distance = Vector2.Distance(transform.position, otherSword.transform.position);
 
-            if (distance < 1.7f)
+            if (distance < 3f)
             {
                 Color tempColor = spriteRenderer.color;
                 spriteRenderer.color = otherSwordRenderer.color;
@@ -34,6 +36,7 @@ public class ChangeSword : MonoBehaviour
                 otherSwordID = swordIDBefore;
 
                 Debug.Log("now holding sword ID " + swordID + " and droped sword ID " + otherSwordID);
+            }
             }
         }
     }
