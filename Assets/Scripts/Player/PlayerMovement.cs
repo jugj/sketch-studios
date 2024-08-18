@@ -105,6 +105,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else 
         {
+            maskOff.Play();
             masks.SetActive(false);
         }
         if(Input.GetKeyDown(KeyCode.Mouse0) && powerActive)

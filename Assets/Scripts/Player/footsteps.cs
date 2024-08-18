@@ -8,12 +8,12 @@ public class footsteps : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.W)) || (Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D)) {
-            footstepSound.enable = true;
+        if(Input.GetKey(KeyCode.W) || (Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.D))) {
+            footstepSound.Play();
         }
         else
         {
-            footstepSound.enable=false;
+            footstepSound.Stop();
         }
     }
 }
