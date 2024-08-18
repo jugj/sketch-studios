@@ -8,6 +8,7 @@ public class ProjectileShoot : MonoBehaviour
     public GameObject ManaBar;
     private PlayerMovement playerMovement;
     private ManaBar manaBar;
+    public AudioSource shootSound;
 
     void Start()
     {
@@ -33,6 +34,7 @@ public class ProjectileShoot : MonoBehaviour
 
     void Shoot()
     {
+        shootSound.Play();
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
 

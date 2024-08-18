@@ -11,9 +11,12 @@ public class SonicSpeed : MonoBehaviour
     private Rigidbody2D rb;
     private ManaBar manaBar;
     public GameObject ManaBar;
+    public AudioSource boost;
+    public TrailRenderer trail;
 
     void Start()
     {
+        trail.emitting = false;
         rb = GetComponent<Rigidbody2D>();
         playerMovement = Player.GetComponent<PlayerMovement>();
         manaBar = ManaBar.GetComponent<ManaBar>();
@@ -22,8 +25,9 @@ public class SonicSpeed : MonoBehaviour
     void Update()
     {
         
-            if (Input.GetKeyDown(KeyCode.Y) && !isLaunching)
+            if (Input.GetKeyDown(KeyCode.Y) && !isLaunching && playerMovement.powerActive)
             {
+                trail.emitting = true;
                     StartCoroutine(Launch());
             }
         
@@ -70,7 +74,8 @@ public class SonicSpeed : MonoBehaviour
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
-
+            trail.emitting = false;
+            boost.Play();
             rb.MovePosition(targetPosition);
             playerMovement.maskHP -= 2;
             manaBar.SetCurrentMana(manaBar.currentmana -= 2);

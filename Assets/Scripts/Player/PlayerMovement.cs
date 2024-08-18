@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject masks;
     public AudioSource maskOn;
     public AudioSource maskOff;
+    public AudioSource swordClash;
     
     public int Health;
     bool  canMove = true;
@@ -31,18 +33,42 @@ public class PlayerMovement : MonoBehaviour
     public GameObject DeathPanel;
     public int maskHP = 10;
     public bool playerDead = false;
+    bool isOver;
+    private ManaBar manaBar;
+    public GameObject ManaBar;
+    public AudioSource footStep1;
+    public AudioSource footStep2;
+    public AudioSource healthSound;
+    public  TMP_Text reasonText;
+    public ParticleSystem collect;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         timer = attackTime;
+        manaBar = ManaBar.GetComponent<ManaBar>();
     }
 
     void OnTriggerEnter2D(Collider2D col) 
     {
-        if(col.gameObject.tag == "EnemyAttack") 
+        if(col.gameObject.tag == "EnemyAttack" && !powerActive) 
         {
             Damage(10);
+            deathParticle.Play();
+        }
+        else if(col.gameObject.tag == "EnemyAttack" && powerActive) 
+        {
+            maskHP -= 2;
+            manaBar.SetCurrentMana(manaBar.currentmana -= 2);
+        }
+
+        if(col.gameObject.tag == "powerHealth" && maskHP < 10) 
+        {
+            collect.Play();
+            maskHP += 2;
+            manaBar.SetCurrentMana(manaBar.currentmana += 2);
+            Destroy(col.gameObject);
+            healthSound.Play();
         }
     }
 
@@ -54,21 +80,32 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
+        if(powerActive && maskHP <= 0 && !isOver)
+        {
+            MaskExplode("Damage");
+        }
+
        if(Health <= 0 && !died) 
        {
             Death();
             died = true;
        }
-        
-        GetInput();
-        Flip();
-        Animation();
-
-        if(Input.GetButtonDown("Jump") && canAttack && !died) 
+        if(!isOver) 
         {
-            anim.SetTrigger("attack");
-            canAttack = false;
+            GetInput();
+            Flip();
+            Animation();
+
+            if(Input.GetButtonDown("Jump") && canAttack && !died) 
+            {
+                anim.SetTrigger("attack");
+                swordClash.Play();
+                canAttack = false;
+            }
         }
+       
+
+      
 
         if(!canAttack) 
         {
@@ -109,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
             maskOff.Play();
             masks.SetActive(false);
         }
-        if(Input.GetKeyDown(KeyCode.Mouse0) && powerActive)
+        if(Input.GetButtonDown("Jump") && powerActive)
         {
             MaskExplode("Sword");
         }
@@ -117,9 +154,13 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(canMove) 
+        if(!isOver) 
         {
             rb.velocity = new Vector2(movementDir.x * speed, movementDir.y * speed);
+        }
+        else 
+        {
+            rb.velocity = Vector2.zero;
         }
     }
 
@@ -155,22 +196,39 @@ public class PlayerMovement : MonoBehaviour
 
    public void MaskExplode(string reason)
    {
-    Debug.Log("Player killed because of " + reason);
-    playerDead = true;
+    if(!isOver) 
+    {
+        Death();
+        Debug.Log("Player killed because of " + reason);
+        reasonText.text = "Player killed because of " + reason;
+        playerDead = true;
+    }
+   
    }
      
 
     void Death() 
     {
+        isOver = true;
         Rig.SetActive(false);
         PlayerCol.enabled = false;
         deathParticle.Play();
         DeathPanel.SetActive(true);
     }
    
-   public void MaskExplode()
-   {
-        Death();
-    //Code for killing player. Coming soon...
-   }
+    public void Step1() 
+    {
+        if(!isOver) 
+        {
+            footStep1.Play();
+        }
+    }
+
+    public void Step2() 
+    {
+        if(!isOver) 
+        {
+            footStep2.Play();
+        }
+    }
 }

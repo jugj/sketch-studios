@@ -11,10 +11,11 @@ public class AI : MonoBehaviour
     public bool isFacingRight = true;
     public BoxScript damage;
     public float attackTimer;
-    float timer;
+    public float timer;
     bool canAttack = true;
     public GameObject attackCol;
     bool attacks;
+    public AudioSource attackSound;
 
     void Update()
     {
@@ -47,7 +48,7 @@ public class AI : MonoBehaviour
                    }
                    else 
                    {
-                        timer =- Time.deltaTime;
+                        timer -= Time.deltaTime;
                         canAttack = true;
                    }
                 }
@@ -88,6 +89,7 @@ public class AI : MonoBehaviour
 
     public void AttackCol() 
     {
+        attackSound.Play();
         attackCol.SetActive(true);
     }
 

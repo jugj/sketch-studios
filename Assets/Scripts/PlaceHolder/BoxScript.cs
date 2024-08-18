@@ -32,6 +32,12 @@ public class BoxScript : MonoBehaviour
             timer = knockbackTimer;
             gotHurt = true;
         }
+
+        if(col.gameObject.tag == "BulletAttack") 
+        {
+            Damage(10);
+            particle.Play();
+        }
        
     }
 
