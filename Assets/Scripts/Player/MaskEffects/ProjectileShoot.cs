@@ -5,11 +5,14 @@ public class ProjectileShoot : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform firePoint;
     public GameObject Player;
+    public GameObject ManaBar;
     private PlayerMovement playerMovement;
+    private ManaBar manaBar;
 
     void Start()
     {
         playerMovement = Player.GetComponent<PlayerMovement>();
+        manaBar = ManaBar.GetComponent<ManaBar>();
     }
 
     void Update()
@@ -19,16 +22,18 @@ public class ProjectileShoot : MonoBehaviour
             if(playerMovement.powerActive && playerMovement.maskHP > 0){
                 Shoot();
                 playerMovement.maskHP -= 1;
+                manaBar.SetCurrentMana(manaBar.currentmana -= 1);
+                Debug.Log("Mana left: " + playerMovement.maskHP);
             }
-            else{
-                playerMovement.MaskExplode();
+            else if(playerMovement.powerActive && playerMovement.maskHP <= 0){
+                playerMovement.MaskExplode("ProjectileShoot");
             }
         }
     }
 
     void Shoot()
     {
-Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
 
         Vector2 direction = (mousePosition - transform.position).normalized;

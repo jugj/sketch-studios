@@ -6052,12 +6052,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 126829657144702979, guid: 9dcfe852a86d1314eb6c5abf221d25bd, type: 3}
       propertyPath: m_Value
-      value: 10
+      value: 10.79
       objectReference: {fileID: 0}
     - target: {fileID: 126829657144702979, guid: 9dcfe852a86d1314eb6c5abf221d25bd, type: 3}
       propertyPath: m_FillRect
       value: 
       objectReference: {fileID: 1920268406}
+    - target: {fileID: 126829657144702979, guid: 9dcfe852a86d1314eb6c5abf221d25bd, type: 3}
+      propertyPath: m_MaxValue
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 126829657144702979, guid: 9dcfe852a86d1314eb6c5abf221d25bd, type: 3}
       propertyPath: m_TargetGraphic
       value: 
@@ -6166,6 +6170,18 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 662129091}
+    - target: {fileID: 6121699218834124587, guid: 9dcfe852a86d1314eb6c5abf221d25bd, type: 3}
+      propertyPath: maxmana
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121699218834124587, guid: 9dcfe852a86d1314eb6c5abf221d25bd, type: 3}
+      propertyPath: currentmana
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6230983414649349200, guid: 9dcfe852a86d1314eb6c5abf221d25bd, type: 3}
+      propertyPath: m_Name
+      value: ManaBar
+      objectReference: {fileID: 0}
     - target: {fileID: 7517584536014784509, guid: 9dcfe852a86d1314eb6c5abf221d25bd, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -6194,12 +6210,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 126829657144702979, guid: 9dcfe852a86d1314eb6c5abf221d25bd, type: 3}
   m_PrefabInstance: {fileID: 662129089}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 679155286}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &679155286 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6230983414649349200, guid: 9dcfe852a86d1314eb6c5abf221d25bd, type: 3}
+  m_PrefabInstance: {fileID: 662129089}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &794704642
 GameObject:
   m_ObjectHideFlags: 0
@@ -6855,6 +6876,7 @@ MonoBehaviour:
   Player: {fileID: 1287921385}
   launchDistance: 8
   launchDuration: 0.2
+  ManaBar: {fileID: 679155286}
 --- !u!114 &1287921392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6870,6 +6892,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 178014698965987852, guid: f8c0ae9329a810a48a4cd1b1f7b868e8, type: 3}
   firePoint: {fileID: 1287921386}
   Player: {fileID: 1287921385}
+  ManaBar: {fileID: 679155286}
 --- !u!1 &1309130195
 GameObject:
   m_ObjectHideFlags: 0
@@ -8132,8 +8155,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 23.783993, y: 2.8210144}
-  m_SizeDelta: {x: -47.568, y: -5.642}
+  m_AnchoredPosition: {x: 39.16, y: 2.8210144}
+  m_SizeDelta: {x: -78.32, y: -5.642}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1920268407
 MonoBehaviour:

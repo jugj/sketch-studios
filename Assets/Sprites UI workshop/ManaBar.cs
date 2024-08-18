@@ -6,7 +6,7 @@ public class ManaBar : MonoBehaviour
 {
 
 public int currentmana;
-public int maxmana = 10;
+public int maxmana = 11;
     public Slider slider;
 
     //set max mana

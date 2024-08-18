@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentmana: 0
-  maxmana: 4
+  maxmana: 10
   slider: {fileID: 0}
 --- !u!114 &126829657144702979
 MonoBehaviour:

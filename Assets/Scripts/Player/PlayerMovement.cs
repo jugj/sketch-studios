@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public bool powerActive;
     public GameObject masks;
     public int maskHP = 10;
+    public bool playerDead = false;
 
     void Start()
     {
@@ -77,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Mouse0) && powerActive)
         {
-            MaskExplode();
+            MaskExplode("Sword");
         }
     }
 
@@ -116,9 +117,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-   public void MaskExplode()
+   public void MaskExplode(string reason)
    {
-    Debug.Log("Player killed");
+    Debug.Log("Player killed because of " + reason);
+    playerDead = true;
     //Code for killing player. Coming soon...
    }
 }
