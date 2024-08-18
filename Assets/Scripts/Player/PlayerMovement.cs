@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject attackCollider;
     float horizontal;
     float vertical;
-    bool powerActive;
+    public bool powerActive;
     public GameObject masks;
     public bool gotHurt;
     public float knockbackValue;
@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public ParticleSystem deathParticle;
     bool died;
     public GameObject DeathPanel;
+    public int maskHP = 10;
 
     void Start()
     {
@@ -128,7 +129,10 @@ public class PlayerMovement : MonoBehaviour
         {
             masks.SetActive(false);
         }
-
+        if(Input.GetKeyDown(KeyCode.Mouse0) && powerActive)
+        {
+            MaskExplode();
+        }
     }
 
     void FixedUpdate()
@@ -189,4 +193,9 @@ public class PlayerMovement : MonoBehaviour
         DeathPanel.SetActive(true);
     }
    
+   public void MaskExplode()
+   {
+    Debug.Log("Player killed");
+    //Code for killing player. Coming soon...
+   }
 }
