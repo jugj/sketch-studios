@@ -16,14 +16,33 @@ public class AI : MonoBehaviour
     public GameObject attackCol;
     bool attacks;
     public AudioSource attackSound;
+    public GameObject Rig;
+    public Collider2D enemyCol;
+
+    void Start() 
+    {
+        FoV.enabled = true;
+    }
 
     void Update()
     {
-        Flip();
-        Animation();
+       
+        if(damage.isDead) 
+        {
+            rb.velocity = Vector2.zero;
+            FoV.enabled = false;
+            Rig.SetActive(false);
+            enemyCol.enabled = false;
 
+        }
+        else 
+        {
+            Flip();
+            Animation();
+            Rig.SetActive(true);
+            enemyCol.enabled = true;
 
-
+            
         if(damage.gotHurt == false && damage.enemypause == false) 
         {
              if(FoV.CanSeePlayer) 
@@ -60,6 +79,9 @@ public class AI : MonoBehaviour
         }
         
        
+        }
+
+
         
         
     }

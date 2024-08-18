@@ -15,6 +15,9 @@ public class BoxScript : MonoBehaviour
     public bool enemypause;
     public float enemypausetime;
     float pausetimer;
+    public bool isDead;
+    public bool isDeadpublic;
+    bool wasdead;
 
     void Start() 
     {
@@ -35,7 +38,7 @@ public class BoxScript : MonoBehaviour
 
         if(col.gameObject.tag == "BulletAttack") 
         {
-            Damage(10);
+            Damage(20);
             particle.Play();
         }
        
@@ -66,9 +69,14 @@ public class BoxScript : MonoBehaviour
 
        if(Health <= 0) 
        {
-            Destroy(this.gameObject);
+            isDead = true;
        }
 
+        if(isDead && !wasdead) 
+        {
+            isDeadpublic = true;
+            wasdead = true;
+        }
       
     }
 

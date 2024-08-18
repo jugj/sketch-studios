@@ -41,6 +41,10 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource healthSound;
     public  TMP_Text reasonText;
     public ParticleSystem collect;
+    public HealthBar healthimg;
+
+    public GameObject ManarbarObj, manaobjbarimg;
+    public GameObject HealthbarObj, healthimgobj;
 
     void Start()
     {
@@ -75,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
     void Damage(int damage) 
     {
         Health -= damage;
+        healthimg.SetCurrentHealth(healthimg.currentHealth -= damage);
     }
 
     void Update()
@@ -138,11 +143,19 @@ public class PlayerMovement : MonoBehaviour
 
         if(powerActive) 
         {
+            ManarbarObj.SetActive(true);
+            manaobjbarimg.SetActive(true);
+            HealthbarObj.SetActive(false);
+            healthimgobj.SetActive(false);
             maskOn.Play();
             masks.SetActive(true);
         }
         else 
         {
+            ManarbarObj.SetActive(false);
+            manaobjbarimg.SetActive(false);
+            HealthbarObj.SetActive(true);
+            healthimgobj.SetActive(true);
             maskOff.Play();
             masks.SetActive(false);
         }

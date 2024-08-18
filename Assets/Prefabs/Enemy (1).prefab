@@ -5267,6 +5267,8 @@ MonoBehaviour:
   Health: 50
   enemypause: 0
   enemypausetime: 1
+  isDead: 0
+  isDeadpublic: 0
 --- !u!95 &8008770491947020973
 Animator:
   serializedVersion: 5
@@ -5343,10 +5345,12 @@ MonoBehaviour:
   rb: {fileID: 7739931171128106962}
   isFacingRight: 1
   damage: {fileID: 1037620785218015133}
-  attackTimer: 4
+  attackTimer: 1.5
   timer: 0
   attackCol: {fileID: 1250660819323285253}
   attackSound: {fileID: 3296981291781261210}
+  Rig: {fileID: 3915747027702450446}
+  enemyCol: {fileID: 4039718096801911055}
 --- !u!82 &3296981291781261210
 AudioSource:
   m_ObjectHideFlags: 0
